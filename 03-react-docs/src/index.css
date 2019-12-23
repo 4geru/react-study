@@ -1,0 +1,9 @@
+h2.title {
+  border-left: solid 10px #666;
+  padding-left: 10px
+}
+
+.content {
+  padding: 10px;
+  background: #cce6ff;
+}
