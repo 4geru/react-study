@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import VoteContainer from '../containers/VoteContainers';
 
 function HelloWorld() {
   return (
@@ -8,6 +9,8 @@ function HelloWorld() {
         HelloWorld
       </header>
       <Link to='/about'>Learn about this app!</Link>
+
+      <VoteContainer label="Upvote or downvote this app!"/>
     </div>
   );
 }
