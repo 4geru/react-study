@@ -90,6 +90,16 @@ class Game extends React.Component {
     });
   }
 
+  resetGame() {
+    this.setState({
+      history: [{
+        squares: Array(9).fill(null)
+      }],
+      stepNumber: 0,
+      xIsNext: true
+    });
+  }
+
   render() {
     const history = this.state.history;
     const current = history[this.state.stepNumber];
@@ -104,6 +114,8 @@ class Game extends React.Component {
         </li>
       );
     });
+
+    const reset = <button onClick={() => this.resetGame()}>reset</button>
 
     let status;
     if (winner) {
@@ -122,7 +134,10 @@ class Game extends React.Component {
         </div>
         <div className="game-info">
           <div>{status}</div>
-          <ol>{moves}</ol>
+          <div>{reset}</div>
+          <ol>
+            {moves}
+          </ol>
         </div>
       </div>
     );
