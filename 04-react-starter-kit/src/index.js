@@ -1,11 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import HelloWorld from './components/HelloWorld';
-import About from './components/About';
+import ThemaContainer from './containers/ThemaContainers';
 import * as serviceWorker from './serviceWorker';
-// routers
-import { Route, BrowserRouter } from 'react-router-dom';
 
 // redux
 import { Provider } from 'react-redux';
@@ -16,12 +13,7 @@ let store = createStore(votes);
 
 ReactDOM.render((
   <Provider store={store}>
-    <BrowserRouter>
-      <div>
-        <Route exact path="/" component={HelloWorld}/>
-        <Route path="/about" component={About}/>
-      </div>
-    </BrowserRouter>
+    <ThemaContainer />
   </Provider>
 ), document.getElementById('root'));
 
