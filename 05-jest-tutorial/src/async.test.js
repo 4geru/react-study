@@ -1,3 +1,5 @@
+// reference: https://jestjs.io/docs/ja/tutorial-async
+
 describe('Callback', () => {
   const fetchData = (callback) => {
     setTimeout(() => {

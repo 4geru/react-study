@@ -1,3 +1,5 @@
+// reference: https://jestjs.io/docs/ja/setup-teardown
+
 describe('setup', () => {
   class SampleClass {
     constructor(value) { this.values = [value]; }
