@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="index.css">
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    </head>
+    <body>
+        <h2>app</h2>
+        <div id="app">
+          <h3>normal if-else</h3>
+          <h4 v-if="awesome">Vue is awesome!</h4>
+          <h4 v-else>Oh no 😢</h4>
+
+          <h3>template</h3>
+          <template v-if="ok">
+            <h4>Title</h4>
+            <p>Paragraph 1</p>
+            <p>Paragraph 2</p>
+          </template>
+
+          <h3>using template</h3>
+          <div v-if="Math.random() > 0.5">
+            Now you see me if block
+          </div>
+          <div v-else-if="Math.random() > 0.5">
+            Now you see me else-if block
+          </div>
+          <div v-else>
+            Now you don't
+          </div>
+
+          <template v-if="loginType === 'username'">
+            <label>Username</label>
+            <input placeholder="Enter your username">
+          </template>
+          <template v-else>
+            <label>Email</label>
+            <input placeholder="Enter your email address">
+          </template>
+          <button v-on:click="toggleButton">toggleButton</button>
+
+          <h3>v-show</h3>
+          <h4 v-show="ok">Hello!</h4>
+        </div>
+        <script src="index.js"></script>
+    </body>
+</html>
