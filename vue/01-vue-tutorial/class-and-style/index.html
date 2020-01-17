@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="index.css">
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    </head>
+    <body>
+      <h2>app</h2>
+      <div id="app">
+        <h4>static object</h4>
+        <div
+          class="static"
+          v-bind:class="{ active: isActive, 'text-danger': hasError }"
+        >{{message}}</div>
+
+        <h4>computed object</h4>
+        <div v-bind:class="classObject">{{message}}</div>
+
+        <h4>array</h4>
+        <div v-bind:class="[activeClass, errorClass]">{{message}}</div>
+
+        <div v-bind:class="[!isActive ? activeClass : '', errorClass]">{{message}}</div>
+
+        <h4>mix</h4>
+        <div v-bind:class="[{ active: isActive }, errorClass]">{{message}}</div>
+      </div>
+
+      <h2>component</h2>
+      # TODO: 後でコンポーネントを振り返る
+      <my-component class="baz boo"></my-component>
+      <script src="index.js"></script>
+    </body>
+</html>
