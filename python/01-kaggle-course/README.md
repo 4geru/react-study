@@ -11,6 +11,10 @@ https://www.kaggle.com/colinmorris/hello-python
 - 2020/01/16
 https://www.kaggle.com/colinmorris/functions-and-getting-help
 
-## /booleans-and-conditionals
+## booleans-and-conditionals
 - 2020/01/31
 https://www.kaggle.com/colinmorris/booleans-and-conditionals
+
+## list
+- 2020/02/02
+https://www.kaggle.com/colinmorris/lists
