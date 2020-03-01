@@ -16,3 +16,11 @@ https://jp.vuejs.org/v2/guide/index.html
 
 - /class-and-style
 [クラスとスタイルのバインディング](https://jp.vuejs.org/v2/guide/class-and-style.html) の内容
+
+- /list
+[リストレンダリング](https://jp.vuejs.org/v2/guide/list.html) の内容
+
+- /event
+[イベントハンドリング](https://jp.vuejs.org/v2/guide/event.html) の内容
+
+
