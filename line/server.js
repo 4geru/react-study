@@ -39,17 +39,17 @@ function handleEvent(event) {
     });
   }
 
-  if (event.type === 'message' && event.message.type === 'sticker') {
-    return client.replyMessage(event.replyToken, {
-      type: 'text',
-      text: 'それはスタンプだから' //実際に返信の言葉を入れる箇所
-    });
-  }
+  const returnableMessageTypes = {
+    "sticker": "それはスタンプだから",
+    "image": "それは画像だから",
+    "video": "それは動画だから",
+    "audio": "それは音声だから"
+  };
 
-  if (event.type === 'message' && event.message.type === 'image') {
+  if (event.type === 'message' && event.message.type in returnableMessageTypes) {
     return client.replyMessage(event.replyToken, {
       type: 'text',
-      text: 'それは画像だから' //実際に返信の言葉を入れる箇所
+      text: returnableMessageTypes[event.message.type] //実際に返信の言葉を入れる箇所
     });
   }
 
