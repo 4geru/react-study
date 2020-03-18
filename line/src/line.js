@@ -1,10 +1,8 @@
 'use strict';
 
-const express = require('express');
 const line = require('@line/bot-sdk');
-const PORT = process.env.PORT || 3000;
 
-require('dotenv').config()
+require('dotenv').config();
 
 const config = {
     channelSecret: process.env.channelSecret,
