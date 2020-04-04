@@ -44,3 +44,5 @@ for {
 [ビルド・実行する - はじめてのGo言語](http://cuto.unirita.co.jp/gostudy/post/first-run/)
 
 ## go get って何？
+
+## make って何？
