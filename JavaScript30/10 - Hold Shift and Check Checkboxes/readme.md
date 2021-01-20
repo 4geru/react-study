@@ -1,0 +1,4 @@
+- しゃくとり法をした
+  - atcoderに良さげな問題がったのでといてみる
+    - https://qiita.com/drken/items/ecd1a472d3a0e7db8dce
+- フラグ変数を定義する
