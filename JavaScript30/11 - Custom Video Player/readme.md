@@ -1,0 +1,19 @@
+- video playerの作成
+  - スタート・ストップボタン
+    - ボタンを押した時に、再生・ストップをする
+    - 動画再生中の場合には「▶︎」ストップした時には「■」を出す
+  - スキップボタン
+    - datasetを基に、-10, 25 skipを実装した
+  - 音量・フレームレートの設定
+    - element.name, element.value をそのまま利用した
+  - progressbarの位置
+    - `timeupdate` event を利用して、動画が再生されている間ずっと更新し続ける
+    - videoの現在の時間と全体の時間から割合を求めて % 表示してあげる
+  - progressのクリックで再生時間を変更する
+    - マウスの位置と動画の時間から現在の時間を求める
+    - マウスダウンしている間自動的に移動して欲しいので、フラグを利用して更新する
+
+- `video.play()`, `video.pause()` が `video[method]()` で呼び出すことができる
+- videoタグでaddEventListener
+  - click, play, pause, timeupdate ができる
+  - メディアのイベント一覧: https://developer.mozilla.org/ja/docs/Web/Events#Media_events
