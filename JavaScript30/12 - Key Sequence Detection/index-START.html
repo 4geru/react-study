@@ -7,6 +7,18 @@
 </head>
 <body>
 <script>
+  const pressed = [];
+  const seacretCode = 'wesbos'
+  window.addEventListener('keyup', (e) => {
+    pressed.push(e.key)
+    pressed.splice(-seacretCode.length - 1, pressed.length - seacretCode.length)
+
+    if(pressed.join('').includes(seacretCode)) {
+      console.log('you did it :)')
+      cornify_add()
+    }
+    console.log(pressed)
+  })
 </script>
 </body>
 </html>
