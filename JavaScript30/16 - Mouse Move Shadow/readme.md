@@ -31,5 +31,5 @@ function radToDeg(rad) {
 
 - text-shadowについて
   - offset-x, offset-y, blur-radius(ぼかし), color
-  - カンマでつなげるとができる
+  - カンマでつなげるとができ
   - https://developer.mozilla.org/ja/docs/Web/CSS/text-shadow
