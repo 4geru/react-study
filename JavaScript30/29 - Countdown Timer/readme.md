@@ -1,0 +1,2 @@
+- setInterval　について実装する
+  - clearInterval で既に動いているintervalを止めることができる
