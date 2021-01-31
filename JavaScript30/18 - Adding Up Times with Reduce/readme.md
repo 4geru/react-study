@@ -1,0 +1,4 @@
+- mapのなかでparseFlaotが使える
+  - map(関数)なので使える, map(() => {}) も同じような形
+- reduceを初めて使った気がする
+  - reduce((返り値, 引数) => {xxx; return 返り値})

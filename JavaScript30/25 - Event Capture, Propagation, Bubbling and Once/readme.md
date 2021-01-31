@@ -1,0 +1,4 @@
+- htmlの要素の親子関係があり、クリックイベントが存在したときに子供→親の要素のイベントが発火する
+  - 親→子にするときには addEventListener にオプションで `capture: true` にする
+  - 伝播しないようにするには `Event.stopPropagation()` で止められる
+  - 1度だけ実行したい場合は addEventListener にオプションで `once: true` を追加する

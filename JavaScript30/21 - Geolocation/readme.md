@@ -1,0 +1,3 @@
+- iOSのシミュレータを初めて使った
+  - https://blanche-toile.com/web/web-devtools-ios-simulator
+  - これに従ってみたが、うまく動かない...

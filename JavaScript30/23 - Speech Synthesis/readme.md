@@ -1,0 +1,3 @@
+- javascriptのデフォルト引数
+    - function(defaultValue = 5) { }
+- bindで値を設定することができる

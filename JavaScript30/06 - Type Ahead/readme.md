@@ -1,0 +1,6 @@
+- fetchの使い方
+  - https://developer.mozilla.org/ja/docs/Web/API/Fetch_API/Using_Fetch
+- 正規表現(RegExp)の使い方
+  - gi は初めて知った
+    - g: 複数使われている場合に全てを対象にする
+    - i: 大文字小文字の区別をしない

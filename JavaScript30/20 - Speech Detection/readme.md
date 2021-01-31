@@ -1,0 +1,3 @@
+- 音声認識APIを利用した
+  - SpeechRecognition
+    - https://developer.mozilla.org/ja/docs/Web/API/SpeechRecognition
