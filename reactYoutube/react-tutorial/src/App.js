@@ -1,22 +1,28 @@
 import { useState } from 'react';
-import { List, Message } from './List';
+import { List } from './List';
+import { Form } from './Form';
+import { Table } from './Table';
 
 function App() {
-  const [description, setDescriptoin] = useState('クリック前の表示');
-  const [count, countUp] = useState(0);
-  const changeDescription = () => {
-    countUp(count + 1);
-    setDescriptoin(`クリック後の表示です(${count}回目です)`);
-  }
+  const [tab, setTab] = useState('list');
 
   return (
     <div>
-      ゼロから始めるReact入門<br />
-      { description }<br/>
-      <button onClick={changeDescription}>button</button>
-
-      <Message title="取扱言語"/>
-      <List title="取扱言語"/>
+      <header>
+        <ul>
+          <li onClick={() => {setTab('list')}}>リスト</li>
+          <li onClick={() => {setTab('form')}}>フォーム</li>
+          <li onClick={() => {setTab('table')}}>テーブル</li>
+        </ul>
+      </header>
+      <hr />
+      {
+        tab === 'list' ?
+          <List /> :
+          tab === 'form' ?
+            <Form /> :
+            <Table />
+      }
     </div>
   );
 }

@@ -1,18 +1,20 @@
-export const Message = (props) => {
-    const title = props.title
-    return (
-        <div>
-            <h4>{ title }</h4>
-            リストです
-        </div>
-    )
-}
+const LANGUAGES = [
+    'Javascript',
+    'C++',
+    'Ruby',
+    'Java',
+    'PHP',
+    'Go'
+]
 
-export const List = ({ title }) => {
+export const List = () => {
     return (
         <div>
-            <h4>{ title }</h4>
-            リストです
+            {
+                LANGUAGES.map((lang, index) => {
+                    return <div key={index}>{ lang }</div>
+                })
+            }
         </div>
     )
 }
