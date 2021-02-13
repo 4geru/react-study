@@ -1,13 +1,15 @@
 import React from 'react';
 import { List } from './List';
 import { Form } from './Form';
+import { LANGUAGES } from  './const/languages'
 
 class App extends React.Component {
   constructor(props) {
     super()
     this.state = {
       color: "#000000",
-      tab: 'list'
+      tab: 'list',
+      langs: LANGUAGES
     }
   }
   changeDesciption() {
@@ -16,8 +18,14 @@ class App extends React.Component {
       color: randomColor
     })
   }
+  addLang(lang) {
+    this.setState({
+      langs: [...this.state.langs, lang],
+      tab: 'list'
+    })
+  }
   render() {
-    const { color, tab } = this.state
+    const { color, tab, langs } = this.state
     const style = {
       color: color
     }
@@ -30,7 +38,7 @@ class App extends React.Component {
           </ul>
         </header>
         <hr />
-        { tab === 'list' ? <List /> : <Form />}
+        { tab === 'list' ? <List langs={ langs } /> : <Form onAddLang={(lang) => { this.addLang(lang) }} />}
         <button onClick={ () => this.changeDesciption() }>button</button>
       </div>
     )

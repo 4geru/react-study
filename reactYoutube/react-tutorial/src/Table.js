@@ -1,25 +1,21 @@
-const LANGUAGES = [
-    'Javascript',
-    'C++',
-    'Ruby',
-    'Java',
-    'PHP',
-    'Go'
-]
-
-export const Table = () => {
+export const Table = ({ languages, onDeleteLang }) => {
     return (
         <table>
+            <tbody>
             {
-                LANGUAGES.map((lang, index) => {
+                languages.map((lang, index) => {
                     return (
                         <tr key={index}>
                             <td>{ index }</td>
                             <td>{ lang }</td>
+                            <td>
+                                <button onClick={() => { onDeleteLang(index) }}>delete</button>
+                            </td>
                         </tr>
                     )
                 })
             }
+            </tbody>
         </table>
     )
 }
