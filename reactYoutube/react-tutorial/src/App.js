@@ -4,6 +4,7 @@ import { List } from './List';
 import { Form } from './Form';
 import { Table } from './Table';
 import { getLanguages } from './const/languages'
+import { withLoading } from './hoc/withLoading'
 
 const Header = styled.header`
   display: flex;
@@ -29,21 +30,9 @@ const HeaderLi = styled.li`
   } 
   `
 
-function App() {
+function App({ data }) {
   const [tab, setTab] = useState('list');
-  const [langs, setLangs] = useState([]);
-
-  useEffect(() => {
-    fetchLanguages()
-
-    // 第二引数に変数を指定することも可能
-    // }, [langs])
-  })
-
-  const fetchLanguages = async () => {
-    const languages = await getLanguages()
-    setLangs(languages)
-  }
+  const [langs, setLangs] = useState(data);
 
   const addLang = (lang) => {
     setLangs([...langs, lang])
@@ -76,4 +65,4 @@ function App() {
   );
 }
 
-export default App;
+export default withLoading(App, getLanguages);

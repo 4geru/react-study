@@ -4,6 +4,7 @@ import { Form } from './Form';
 import { getLanguages } from  './const/languages'
 import styled from 'styled-components'
 import { Button } from './components/button'
+import { withLoading } from './hoc/withLoading'
 
 const Header = styled.header`
   display: flex;
@@ -32,7 +33,7 @@ class App extends React.Component {
     this.state = {
       color: "#000000",
       tab: 'list',
-      langs: []
+      langs: props.data
     }
   }
   componentDidMount() {
@@ -76,4 +77,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default withLoading(App, getLanguages);
