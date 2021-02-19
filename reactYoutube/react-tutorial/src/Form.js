@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Button } from './components/button'
+import { FormModal } from './FormModal'
 import styled from 'styled-components';
 import { TabBodyContainer } from './components/tab-body-container'
 
@@ -26,11 +27,12 @@ const FormButton = styled(Button)`
 
 export const Form = ({ onAddLang }) => {
     const [text, setText] = useState('')
+    const [showModal, setShowModal] = useState(false)
     const [disabledForm, setDisabledForm] = useState('')
 
     const submitForm = (event) => {
-        onAddLang(text);
         event.preventDefault();
+        setShowModal(true)
     }
     return (
         <TabBodyContainer
@@ -50,6 +52,14 @@ export const Form = ({ onAddLang }) => {
                     <FormButton>追加</FormButton>
                 </ButtonContainer>
             </form>
+            {
+                showModal ?
+                    <FormModal
+                        confirm={() => { onAddLang(text) }}
+                        cancel={() => {setShowModal(false)}}
+                    /> :
+                    ''
+            }
             <ButtonContainer>
                 <Button onClick={() => setDisabledForm(!disabledForm)}>disabled</Button>
             </ButtonContainer>

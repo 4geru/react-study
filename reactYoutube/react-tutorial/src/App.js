@@ -5,6 +5,7 @@ import { Form } from './Form';
 import { Table } from './Table';
 import { getLanguages } from './const/languages'
 import { withLoading } from './hoc/withLoading'
+import { Modal } from './components/modal'
 
 const Header = styled.header`
   display: flex;

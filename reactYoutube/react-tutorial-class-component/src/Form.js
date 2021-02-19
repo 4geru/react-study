@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { Button } from './components/button'
 import { TabBodyContainer } from './components/tab-body-container'
-
+import { FormModal } from './FormModal'
 const Label = styled.div`
     display: flex;
     color:  #757575;
@@ -24,39 +24,37 @@ const FormButton = styled(Button)`
     width: 120px;
 `
 
-
 export class Form extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { text: '' }
+        this.state = { text: '', showModal: false }
     }
     submitForm (e) {
         e.preventDefault();
-        this.props.onAddLang(this.state.text);
+        this.setState({showModal: true})
     }
     render() {
-        const { text } = this.state
+        const { text, showModal } = this.state
+        const { onAddLang } = this.props
         return (
-          <TabBodyContainer
-              title="新しい言語を追加"
-              children={
+            <TabBodyContainer title="新しい言語の追加">
                 <form onSubmit={(e) => this.submitForm(e)}>
-                    <Input
-                        type="text"
-                        value={text}
-                        onChange={
-                            (e) => {
-                                this.setState({text: e.target.value})
-                            }
-                        }
-                    />
-                    <ButtonContainer>
-                        <FormButton>submit</FormButton>
-                    </ButtonContainer>
+                <div>
+                    <Label>言語</Label>
+                    <Input type="text" value={text} onChange={(e) => this.setState({ text: e.target.value })} autoFocus/>
+                </div>
+                <ButtonContainer>
+                    <FormButton>追加</FormButton>
+                </ButtonContainer>
                 </form>
-              }
-            >
-          </TabBodyContainer>
+                {
+                showModal &&
+                    <FormModal
+                    confirm={() => onAddLang(text)}
+                    cancel={() => this.setState({ showModal: false })}
+                    />
+                }
+            </TabBodyContainer>
         )
       }
 }
