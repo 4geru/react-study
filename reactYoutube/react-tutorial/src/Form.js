@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Button } from './components/button'
 import { FormModal } from './FormModal'
+import { Hint } from './components/hint'
 import styled from 'styled-components';
 import { TabBodyContainer } from './components/tab-body-container'
 
@@ -47,6 +48,10 @@ export const Form = ({ onAddLang }) => {
                         onChange={(e) => setText(e.target.value)}
                         disabled={disabledForm}
                     />
+                    <Hint
+                        message='言語の名前です'
+                    >
+                    </Hint>
                 </div>
                 <ButtonContainer>
                     <FormButton>追加</FormButton>
