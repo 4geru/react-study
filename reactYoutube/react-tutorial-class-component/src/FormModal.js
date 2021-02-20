@@ -2,6 +2,7 @@ import { Modal } from './components/modal';
 import { Button } from './components/button';
 import React from 'react';
 import styled from 'styled-components';
+import { ThemaContext } from './contexts/ThemaContext';
 
 const Container = styled.div`
     width: 240px;
@@ -9,6 +10,8 @@ const Container = styled.div`
     padding: 24px 36px;
     background-color: white;
     height: 100px;
+    color: ${({thema}) => thema.color};
+    background-color: ${({thema}) => thema.backgroundColor};
 `
 const ButtonWrapper = styled.div`
     display: flex;
@@ -17,19 +20,26 @@ const ButtonWrapper = styled.div`
 `
 
 export class FormModal extends React.Component {
+
     render() {
         const { cancel, confirm } = this.props;
         return (
             <Modal>
-                <Container>
-                    <div>
-                        本当に削除しますか？
-                    </div>
-                    <ButtonWrapper>
-                        <Button onClick={confirm}>yes</Button>
-                        <Button onClick={cancel}>no</Button>
-                    </ButtonWrapper>
-                </Container>
+                <ThemaContext.Consumer>
+                    {
+                        ([thema]) => (
+                            <Container thema={thema}>
+                                <div>
+                                    本当に削除しますか？
+                                </div>
+                                <ButtonWrapper>
+                                    <Button onClick={confirm}>yes</Button>
+                                    <Button onClick={cancel}>no</Button>
+                                </ButtonWrapper>
+                            </Container>
+                        )
+                    }
+                </ThemaContext.Consumer>
             </Modal>
         )
     }

@@ -1,16 +1,21 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
 import styled from 'styled-components';
+import { ThemaContext } from '../context/ThemaContext';
 
 const LoadDiv = styled.div`
+    height: 100%;
     padding: 36px;
+    color: ${({thema}) => thema.color};
+    background-color: ${({thema}) => thema.backgroundColor};
 `
 
 export const withLoading = (WrapComponent, fetchData) => {
     return () => {
         const [data, setData] = useState(null);
+        const [thema] = useContext(ThemaContext);
 
         const Loading = (
-            <LoadDiv>
+            <LoadDiv thema={thema}>
                 loading...
             </LoadDiv>
         )

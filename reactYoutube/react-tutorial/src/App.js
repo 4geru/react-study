@@ -1,39 +1,23 @@
-import { useState, useEffect } from 'react';
-import styled from 'styled-components';
+import { useState, useEffect, useContext } from 'react';
 import { List } from './List';
 import { Form } from './Form';
 import { Table } from './Table';
 import { getLanguages } from './const/languages'
 import { withLoading } from './hoc/withLoading'
-import { Modal } from './components/modal'
+import { Header } from './Header'
+import { ThemaContext } from './context/ThemaContext';
+import styled from 'styled-components';
 
-const Header = styled.header`
-  display: flex;
-  justify-content: space-between;
-  padding: 24p 64px 0;
-  border-bottom: 1px solid #E0E0E0;
+const Container = styled.div`
+  height: 100%;
+  color: ${({thema}) => thema.color};
+  background-color: ${({thema}) => thema.backgroundColor};
 `
-
-const HeaderUl = styled.ul`
-  display: flex;
-  margin: 0;
-  padding: 0;
-`
-
-const HeaderLi = styled.li`
-  list-style: none;
-  padding: 4px 12px;
-  cursor: pointer;
-  border-bottom: ${props => props.focused ? '2px solid #F44336' : ''}
-
-  ::before {
-    content: "${props => props.focused ? '🍣' : '🍺' }";
-  } 
-  `
 
 function App({ data }) {
   const [tab, setTab] = useState('list');
   const [langs, setLangs] = useState(data);
+  const [thema] = useContext(ThemaContext);
 
   const addLang = (lang) => {
     setLangs([...langs, lang])
@@ -47,14 +31,11 @@ function App({ data }) {
   }
 
   return (
-    <div>
-      <Header>
-        <HeaderUl>
-          <HeaderLi focused={tab === 'list' } onClick={() => {setTab('list')}}>リスト</HeaderLi>
-          <HeaderLi focused={tab === 'form' } onClick={() => {setTab('form')}}>フォーム</HeaderLi>
-          <HeaderLi focused={tab === 'table' } onClick={() => {setTab('table')}}>テーブル</HeaderLi>
-        </HeaderUl>
-      </Header>
+    <Container thema={thema}>
+      <Header
+        tab={tab}
+        setTab={setTab}
+      />
       {
         tab === 'list' ?
           <List languages={langs} /> :
@@ -62,8 +43,8 @@ function App({ data }) {
             <Form onAddLang={addLang} /> :
             <Table languages={langs} onDeleteLang={deleteLang} />
       }
-    </div>
+    </Container>
   );
 }
 
-export default withLoading(App, getLanguages);
+export default App;

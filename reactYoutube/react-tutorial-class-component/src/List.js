@@ -19,12 +19,12 @@ export class List extends React.Component {
     return (
       <TabBodyContainer
         title="言語一覧"
-        children={
+      >
+        {
           langs.map((lang, index) => {
             return <ListItem key={index}>{lang}</ListItem>
           })
         }
-      >
       </TabBodyContainer>
     )
   }
