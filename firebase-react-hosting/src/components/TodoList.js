@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components';
 import Container from 'muicss/lib/react/container';
 import Button from 'muicss/lib/react/button';
 import Row from 'muicss/lib/react/row';
 import Col from 'muicss/lib/react/col';
+import { TodosContext } from '../contexts/TodoContext';
 
 const CustomCol = styled(Col)`
   padding-left: 15px;
@@ -12,7 +13,8 @@ const CustomCol = styled(Col)`
 const Done = styled.div`
   text-decoration-line: line-through;
 `
-function TodoList({todos, completeTodo, removeTodo}) {
+function TodoList() {
+    const {todos, completeTodo, removeTodo} = useContext(TodosContext);
     return (
         <Container fluid={true}>
         {
