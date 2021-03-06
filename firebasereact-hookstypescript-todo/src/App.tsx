@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import logo from './logo.svg';
 import styles from './App.module.css';
-import { db } from './firebase';
+import { db, auth } from './firebase';
 import { FormControl, TextField, List } from '@material-ui/core';
 import AddToPhotoIcon from '@material-ui/icons/AddToPhotos';
 import TaskItem from './TaskItem';
 import { makeStyles } from '@material-ui/styles';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
 const useStyles = makeStyles({
   field: {
@@ -18,10 +19,20 @@ const useStyles = makeStyles({
   }
 })
 
-const App: React.FC = () => {
+const App: React.FC = (props: any) => {
   const [tasks, setTasks] = useState([{id: "", title: ""}]);
   const [input, setInput] = useState("");
   const classes = useStyles();
+
+  useEffect(() => {
+    const unSub = auth.onAuthStateChanged((user) => {
+      !user && props.histroy.push('/login');
+    })
+    return () => {
+      unSub()
+    }
+  })
+
   useEffect(() => {
     const unSub = db.collection('tasks').onSnapshot( snapshot => {
       const loadTasks = snapshot.docs.map( (doc) => {
@@ -42,9 +53,25 @@ const App: React.FC = () => {
     db.collection('tasks').add({title: input});
     setInput('');
   }
+
+  const logout = async () => {
+    try {
+      await auth.signOut();
+      props.history.push('/login');
+    } catch (error) {
+      alert(error.message);
+    }
+  }
   
   return <div className={ styles.app__root }>
     <h1>Todo app by React/firebase</h1>
+    <button
+      className={styles.app__logout}
+      onClick={logout}
+    >
+      <ExitToAppIcon />
+    </button>
+
     <br />
     <FormControl>
       <TextField
