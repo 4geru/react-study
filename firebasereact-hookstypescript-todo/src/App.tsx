@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import styles from './App.module.css';
 import { db, auth } from './firebase';
 import { FormControl, TextField, List, CircularProgress } from '@material-ui/core';
@@ -8,6 +8,7 @@ import { makeStyles } from '@material-ui/styles';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import firebase from 'firebase/app';
 import styled from 'styled-components';
+import { UserContext } from './contexts/UserContext';
 
 const useStyles = makeStyles({
   field: {
@@ -33,7 +34,6 @@ const App: React.FC = (props: any) => {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [uid, setUid] = useState<string | any | null>(null);
   const [input, setInput] = useState("");
-  const [isLoading, setIsLoading] = useState(true);
   const classes = useStyles();
 
   useEffect(() => {
@@ -47,7 +47,6 @@ const App: React.FC = (props: any) => {
             title: doc.data().title
           }
         })
-        setIsLoading(false)
         setUid(uid)
         setTasks(loadTasks)
       })
@@ -81,44 +80,46 @@ const App: React.FC = (props: any) => {
       <ExitToAppIcon />
     </button>
     <br />
-    { isLoading ?
-      <CustomCircularProgress
-      size={ 100 }
-      /> :
-      <>
-        <FormControl>
-          <TextField
-            className={classes.field}
-            InputLabelProps={{
-              shrink: true,
-            }}
-            label="New Task"
-            value={input}
-            onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setInput(e.target.value) }
-          />
-        </FormControl>
-        <button
-            className={styles.app__icon}
-            disabled={!input}
-            onClick={newTask}
+    <UserContext.Provider value={{uid}}>
+      { !uid ?
+        <CustomCircularProgress
+        size={ 100 }
+        /> :
+        <>
+          <FormControl>
+            <TextField
+              className={classes.field}
+              InputLabelProps={{
+                shrink: true,
+              }}
+              label="New Task"
+              value={input}
+              onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setInput(e.target.value) }
+            />
+          </FormControl>
+          <button
+              className={styles.app__icon}
+              disabled={!input}
+              onClick={newTask}
+            >
+              <AddToPhotoIcon />
+            </button>
+          <List
+            className={classes.list}
           >
-            <AddToPhotoIcon />
-          </button>
-        <List
-          className={classes.list}
-        >
-          {
-            tasks.map((task, index) =>
-              <TaskItem
-                key={task.id}
-                id={task.id}
-                title={task.title}
-              />
-            )
-          }
-        </List>
-      </>
-    }
+            {
+              tasks.map((task, index) =>
+                <TaskItem
+                  key={task.id}
+                  id={task.id}
+                  title={task.title}
+                />
+              )
+            }
+          </List>
+        </>
+      }
+    </UserContext.Provider>
   </div>;
 }
 
