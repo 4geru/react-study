@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import firebase from 'firebase/app';
 import { ListItem, TextField, Grid } from '@material-ui/core';
 import DeleteOutlineOutlinedIcon from '@material-ui/icons/DeleteOutlineOutlined';
 import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
-import { db } from './firebase';
+import { db, auth } from './firebase';
 import styled from 'styled-components';
 
 interface PROPS {
@@ -20,13 +20,25 @@ const Button = styled.button`
     color: dimgray;
 `
 const TaskItem: React.FC<PROPS> = (props) => {
+    const [uid, setUid] = useState<string | any | null>(null);
     const [title, setTitle] = useState(props.title);
+    useEffect(() => {
+        const unSub = auth.onAuthStateChanged((user) => {
+            const uid = user?.uid;
+            setUid(uid)
+            })
+
+        return () => {
+            unSub();
+        }
+    }, []);
+
     const editTask = () => {
-        db.collection('tasks').doc(props.id).set({title: title}, { merge: true })
+        db.collection('users').doc(uid).collection('tasks').doc(props.id).set({title: title}, { merge: true })
     }
 
     const deleteTask = () => {
-        db.collection('tasks').doc(props.id).delete()
+        db.collection('users').doc(uid).collection('tasks').doc(props.id).delete()
     }
     return (
         <ListItem>
