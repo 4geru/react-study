@@ -42,7 +42,13 @@ Java, Go, Power shell, Node.js, C#, Python, Ruby が対応
 
 ## 03. AWS Lambda ハンズオン ① Lambda を単体で使ってみる
 
+全体の流れ
+
 1. テンプレートなしで Lambda Function を設定する
 2. メモリ・タイムアウトを知る
 3. IAM について
 4. Log の出力を見る
+
+### Lambda Function を作る
+
+![image](https://user-images.githubusercontent.com/8898432/112741416-a6364780-8fc0-11eb-9f83-91f1757934c1.png)
