@@ -11,7 +11,7 @@ PayPay for Developersに新規登録をする
 
 ## サンプルコードを動かす上で必要な情報
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/721b248a-844e-4f9e-bc00-554844c5ceb3/_2021-04-28_08-35-27.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/721b248a-844e-4f9e-bc00-554844c5ceb3/_2021-04-28_08-35-27.png)
+<img width="723" alt="_2021-04-28_08-35-27" src="https://user-images.githubusercontent.com/8898432/116487661-746c1580-a8cb-11eb-9a2e-82d3c1903b5e.png">
 
 ## pip install
 
@@ -77,4 +77,4 @@ PayPayアプリのサンドボックスへのログイン方法
 
 - [https://developer.paypay.ne.jp/dashboard/home](https://developer.paypay.ne.jp/dashboard/home) にアクセスし、テストユーザータブを選択する
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/fa7f236d-1d9e-49a3-90f9-c8e0391e0a3b/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/fa7f236d-1d9e-49a3-90f9-c8e0391e0a3b/Untitled.png)
+![Untitled](https://user-images.githubusercontent.com/8898432/116487662-759d4280-a8cb-11eb-9e95-3ccf13b030e1.png)
