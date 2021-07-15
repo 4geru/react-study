@@ -1,3 +1,6 @@
+// * 2分探索
+// Twitter: https://twitter.com/e869120/status/1376665578513989633?s=20
+// ためになる https://qiita.com/drken/items/97e37dd6143e33a64c8c
 package main
 import "fmt"
 
