@@ -2,6 +2,7 @@ package main
 import (
 	"fmt"
 	"math"
+	"strconv"
 )
 
 func add(a float64, b int) (value int) {
@@ -25,6 +26,10 @@ func main(){
 			sum += input - 10
 		}
 	}
+	// int to string
+	fmt.Println(strconv.Itoa(12))
+	// string to int
+	fmt.Println(strconv.Atoi("12"))
 	fmt.Println(sum)
 
 	fmt.Println(add(64, 64))
