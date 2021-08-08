@@ -1,0 +1,6 @@
+- Goプログラミング実践入門 標準ライブラリでゼロからWebアプリを作る
+    - https://book.impress.co.jp/books/1115101145
+- サポートページ
+  - https://marlin-arms.com/support/goweb/
+- 原著のサンプルコード
+  - https://github.com/sausheong/gwp
